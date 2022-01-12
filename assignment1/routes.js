@@ -15,8 +15,16 @@ function requestHandler(req, res) {
       createHtml(res, 'Welcome', () => {
         res.write('<h1>Welcome to my web site!</h1>');
         res.write('<form action="/create-user" method="POST">');
-        res.write('<input name="username" type="text">');
-        res.write('<button type="submit">Create User</button>');
+        res.write(
+          '<div><input name="username" type="text" placeholder="User Name"></div>'
+        );
+        res.write(
+          '<div><input name="email" type="text" placeholder="Email"></div>'
+        );
+        res.write(
+          '<div><input name="message" type="text" placeholder="Message"></div>'
+        );
+        res.write('<div><button type="submit">Create User</button></div>');
         res.write('</form>');
       });
       res.end();
@@ -40,8 +48,11 @@ function requestHandler(req, res) {
         });
         return req.on('end', () => {
           const parsedBody = Buffer.concat(body).toString();
-          const userName = parsedBody.split('=')[1];
-          console.log(`User '${userName} created!`);
+          console.log(parsedBody);
+          parsedBody.split('&').forEach((s) => {
+            const pair = s.split('=');
+            console.log(`${pair[0]}: ${pair[1]}`);
+          });
           res.statusCode = 302;
           res.setHeader('Location', '/');
           return res.end();
