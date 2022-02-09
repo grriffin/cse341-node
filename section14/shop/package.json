@@ -1,0 +1,28 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "CSE341 Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Griffin Pope",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-mongodb-session": "^3.1.1",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.17.2",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.1.8",
+    "mysql2": "^1.6.1"
+  }
+}
